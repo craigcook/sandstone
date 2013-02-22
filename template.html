@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Page Title</title>
+    <title>Mozilla Sandstone</title>
 
     <link rel="stylesheet" href="/media/css/sandstone/sandstone.css" media="all">
+
     <link href="//www.mozilla.org/tabzilla/media/css/tabzilla.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/media/img/favicon.ico">
@@ -17,46 +18,140 @@
 
   </head>
 
-  <body>
+  <body class="sand">
     <div id="outer-wrapper">
       <div id="wrapper">
-  
+
         <header id="masthead">
           <a href="http://www.mozilla.org/" id="tabzilla">Mozilla</a>
-  
+
+          <!--
+            The main navigation is optional, for pages that need it. 
+            The number of links should be kept to a minimum, no more than 5 or 6.
+            If you need more than 6 links in this navbar, you have bigger IA problems to focus on.
+          -->
           <nav id="nav-main" role="navigation">
             <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">Menu</span>
             <ul id="nav-main-menu">
-              <li class="first"><a href="/page-one">Page One</a></li>
-              <li><a href="/page-two">Page Two</a></li>
-              <li><a href="/page-three">Page Three</a></li>
-              <li class="last"><a href="/page-four">Page Four</a></li>
+              <li class="first"><a href="#">Page One</a></li>
+              <li><a href="#">Page Two</a></li>
+              <li><a href="#">Page Three</a></li>
+              <li class="last"><a href="#">Page Four</a></li>
             </ul>
           </nav>
+
           <h2><a href="http://www.mozilla.org"><img src="/media/img/sandstone/header-mozilla-stone.png" alt="mozilla"></a></h2>
+
+          <!--
+            Breadcrumbs are optional, if the hierarchy warrants it.
+            The number of links should be kept to a minimum, no more than 3 or 4.
+            If you need more than 4 breadcrumb links, you have bigger IA problems to focus on.
+          -->
+          <nav class="breadcrumbs">
+            <a href="#">Top</a> >
+            <a href="#">Parent</a> >
+            <span>Mozilla Sandstone</span>
+          </nav>
         </header>
-  
-  
-          <hgroup id="main-feature" class="huge">
-            <h1>Page Title</h1>
-            <h2>Page Subtitle</h2>
-          </hgroup>
- 
-          <div id="main-content">         
-          
-                    <p>Page body</p>
-                
-          </div>
-  
+
+        <!--
+          The main feature of a page is usually the main title, but may also consists of a promotional 
+          banners, introductory text, etc. However, this should not be the main content or "meat" of the 
+          page, so it shouldn't contain a lot of text or a full article. Think of it as a masthead for 
+          this specific page below the global masthead for the entire site. Use an appropriate element 
+          with the id "main-feature". This might be a single heading (h1), an hgroup, a div, etc.
+        -->
+        <hgroup id="main-feature" class="center">
+          <h1 class="large">Mozilla Sandstone</h1>
+          <h2>A global style for Mozilla websites</h2>
+        </hgroup>
+
+        <!--
+          The real meat of the page should be wrapped in a container with the id "main-content". This 
+          could be a generic div, an article, a section, or the new main element - whatever is most 
+          semantically appropriate for the content.
+        -->
+        <div id="main-content">
+
+            <article class="main-column">
+
+              <h1>What is Sandstone</h1>
+              <p>Sandstone is our defined style and form for Web properties. Combining
+              set visual styles, UX elements, and a responsive grid system, it creates
+              a cohesive brand experience across all our websites. You can learn more
+              about it in the <a href="http://www.mozilla.org/styleguide/websites/sandstone/">Mozilla style guide</a>.</p>
+
+              <h2>Responsive grids</h2>
+              <p>The default grid system for Sandstone is 12 columns at a width of 940px,
+              where each column is 60px wide with 20px gutters. Those gutters are achieved
+              with 10px margins on the left and right of the columns so elements can span columns
+              and float next to each other in an endless variety of configurations.</p>
+
+              <p>The columns switch to 40px wide for smaller viewports, those between 760px
+              and 480px wide. For especially small viewports &ndash; namely smartphones or
+              other handheld mobile devices &ndash; the grid drops to 5 columns at 40px and
+              most content is allowed to stack vertically rather than float side by side. Bear
+              this in mind when you arrange your content so it can maintain a sensible flow in
+              both configurations.</p>
+
+              <h2>Headings</h2>
+              <p>The secondary heading above is an <code>h2</code> element, which may be used for any
+              form of important page-level heading. Primary titles, such as the page title or the title
+              of this article can be <code>h1</code> elements. In HTML5, each new section element in a document
+              establishes a new context with a new heading hierarchy, so it's perfectly acceptable to
+              have more than one <code>h1</code> on a single page, but there should generally be as few
+              as possible.</p>
+
+              <p>Use headings in the correct order to indicate hierarchy and the relative importance
+              of the content they introduce.</p>
+
+              <h3>Third-Level Heading</h3>
+              <p>The heading above is an <code>h3</code> element, which may be used for any form of
+              page-level heading which falls below the <code>h2</code> heading in a document hierarchy.</p>
+
+              <h4>Fourth-Level Heading</h4>
+              <p>For all headings below third-level, follow the guidelines listed above.
+              Only use lower heading levels when necessary.</p>
+
+              <h5>Fifth-Level Heading</h5>
+              <p>For all headings below third-level, follow the guidelines listed above.
+              Only use lower heading levels when necessary.</p>
+
+              <h6>Sixth-Level Heading</h6>
+              <p>For all headings below third-level, follow the guidelines listed above.
+              Only use lower heading levels when necessary.</p>
+
+            </article>
+
+            <aside class="sidebar">
+              <h3>Sidebar</h3>
+              <p>Some pages may have optional sidebars to contain supplemental content or navigation.
+              Sidebars typically wrap under the main column in mobile viewports, and should always be
+              considered secondary to the main intent of the page. If a sidebar contains vital and
+              essential content, then perhaps that content shouldn't be in a sidebar.</p>
+
+              <nav>
+                <h4>Sidebar Navigation</h4>
+                <ul>
+                  <li><a href="#">Page One</a></li>
+                  <li><a href="#">Page Two</a></li>
+                  <li><a href="#">Page Three</a></li>
+                </ul>
+              </nav>
+
+            </aside>
+
+        </div>
+
       </div><!-- close #wrapper -->
 
       <footer id="colophon">
         <div class="row">
-  
+
           <div class="footer-logo">
               <a href="https://www.mozilla.org"><img src="/media/img/sandstone/footer-mozilla.png" alt="mozilla"></a>
           </div>
-  
+
           <div class="footer-license">
               <p>Portions of this content are ©1998–2013 by individual
                 mozilla.org contributors. Content available under
@@ -69,18 +164,23 @@
             <li><a href="https://www.mozilla.org/about/legal.html">Legal Notices</a></li>
             <li><a href="https://www.mozilla.org/legal/fraud-report/index.html">Report Trademark Abuse</a></li>
           </ul>
-  
+
           <ul class="footer-nav">
             <li><a href="http://twitter.com/firefox">Twitter</a></li>
             <li><a href="http://facebook.com/Firefox">Facebook</a></li>
             <li><a href="https://affiliates.mozilla.org/">Firefox Affiliates</a></li>
           </ul>
-  
+
         </div>
       </footer>
-  
-      <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
+
     </div><!-- close #outer-wrapper -->
+
+    <script src="/media/js/libs/jquery-1.7.1.min.js"></script>
+    <script src="/media/js/site.js"></script>
+    <script src="/media/js/nav-main-resp.js"></script>
+    <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
+
 
   </body>
 </html>

@@ -106,13 +106,6 @@ body {
     background: #f9f9f9 url(/media/img/sandstone/bg-stone.png) 0 0 repeat-x;
 }
 
-#wrapper {
-    padding-bottom: 40px;
-    width: 1000px;
-    margin: 0 auto;
-    position: relative;
-}
-
 a:link,
 a:visited {
     color: #0096dd;
@@ -242,21 +235,24 @@ small {
     line-height: 16px;
 }
 
-hgroup h1, 
-hgroup h2, 
-hgroup h3, 
-hgroup h4, 
-hgroup h5, 
+hgroup h1,
+hgroup h2,
+hgroup h3,
+hgroup h4,
+hgroup h5,
 hgroup h6 {
     margin-bottom: 0;
 }
 
-p,
-ul,
-ol,
-dl,
-hgroup {
+
+/* General content */
+p, ul, ol, dl, hgroup, blockquote, pre {
     margin: 0 0 20px;
+}
+
+blockquote {
+    padding: 0 20px;
+    border-left: 1px solid #d6d6d6;
 }
 
 ul.unstyled li,
@@ -287,14 +283,6 @@ dl dt {
 
 dl dd {
     margin-bottom: 40px;
-}
-
-dl.faq dt {
-    font-size: 1.125em;
-}
-
-dl.faq dd {
-    margin-bottom: 1.5em;
 }
 
 pre,
@@ -366,23 +354,36 @@ input.focus {
 }
 
 
-/* Layout */
-#main-content,
-#main-feature {
-    padding-bottom: 48px;
-}
+/* Desktop Layout (default)
+ *
+ * The Sandstone layout is based on a 12 column grid where each column is 60px wide with 20px gutters.
+ * The gutters are achieved with 10px left and right margins on each column.
+ * Blocks can span multiple columns in any number of configurations.
+ *
+ * There are 30px outer page gutters for a total page width of 1000px.
+ *
+ * width = (60px * columns) + (20px * (columns - 1))
+ *
+ * 1 column span - width: 60px;
+ * 2 column span - width: 140px;
+ * 3 column span - width: 220px;
+ * 4 column span - width: 300px;
+ * 5 column span - width: 380px;
+ * 6 column span - width: 460px;
+ * 7 column span - width: 540px;
+ * 8 column span - width: 620px;
+ * 9 column span - width: 700px;
+ * 10 column span - width: 780px;
+ * 11 column span - width: 860px;
+ * 12 column span - width: 940px;
+ */
 
-.main-column {
-    width: 460px;
-    margin: 0 10px;    
+#wrapper {
+    padding-bottom: 40px;
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
 }
-
-.sidebar {
-    width: 140px;
-    float: left;
-    margin-left: 170px;
-}
-
 
 /* Grid containers */
 #masthead,
@@ -393,8 +394,8 @@ input.focus {
 .container {
     display: block;
     margin: 0 auto;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     position: relative;
 }
 
@@ -412,12 +413,32 @@ input.focus {
     visibility: hidden;
 }
 
-/* Header Nav */
+#main-content,
+#main-feature {
+    padding-bottom: 48px;
+}
+
+.main-column {
+    float: left;
+    width: 620px; /* 8 column span */
+    margin: 0 10px;
+}
+
+.sidebar {
+    float: left;
+    width: 220px; /* 3 column span */
+    margin: 0 10px;
+    margin-left: 90px; /* 1 column offset */
+}
+
+
+/* Header */
 #masthead h2 {
     padding: 30px 0 20px;
     margin: 0 10px;
 }
 
+/* Main Nav */
 #masthead nav {
     float: right;
     margin-right: 16px;
@@ -445,7 +466,6 @@ input.focus {
     background-image: url(/media/img/sandstone/menu-current.png);
 }
 
-
 #masthead nav a,
 #masthead nav a:link,
 #masthead nav a:visited {
@@ -454,6 +474,24 @@ input.focus {
 
 #nav-main .toggle {
     display: none; /* Hidden in non-mobile views */
+}
+
+/* Header Breadcrumbs */
+#masthead nav.breadcrumbs {
+  padding: 0 10px 10px;
+  float: none;
+}
+
+#masthead nav.breadcrumbs a,
+#masthead nav.breadcrumbs span {
+  padding: 0;
+  margin-right: .5em;
+  margin-left: .5em;
+}
+
+#masthead nav.breadcrumbs a:first-child,
+#masthead nav.breadcrumbs span:first-child {
+  margin-left: 0;
 }
 
 
@@ -467,13 +505,13 @@ input.focus {
     border-bottom: 1px solid #ddd;
 }
 
-.billboard h1, 
-.billboard h2, 
-.billboard h3, 
-.billboard h4, 
-.billboard h5, 
-.billboard h6, 
-.billboard .huge, 
+.billboard h1,
+.billboard h2,
+.billboard h3,
+.billboard h4,
+.billboard h5,
+.billboard h6,
+.billboard .huge,
 .billboard .large {
     color: #484848;
 }
@@ -498,7 +536,7 @@ nav.menu-bar li {
     padding-top: 10px;
     padding-bottom: 10px;
 }
- 
+
 nav.menu-bar a {
     display: inline-block;
     border-left: 1px dotted #d6d6d6;
@@ -513,11 +551,14 @@ nav.menu-bar span:first-child a {
     border-left: 0;
 }
 
-
-/* Tables - use the .table class for common data tables. Tables without this class don't have any special styling. */
+/* Tables -
+ * Use the .table class for common data tables.
+ * Tables without this class don't have any special styling.
+ */
 .table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 20px;
 }
 
 .table caption {
@@ -554,7 +595,7 @@ nav.menu-bar span:first-child a {
     margin: 0;
 }
 
-.sidebar nav a, 
+.sidebar nav a,
 .sidebar nav b {
     display: block;
     padding: 8px 0;
@@ -562,10 +603,6 @@ nav.menu-bar span:first-child a {
 
 .sidebar nav li b {
     font-weight: bold;
-}
-
-.sidebar nav li:first-child {
-    font-size: 24px;
 }
 
 
@@ -599,12 +636,6 @@ nav.menu-bar span:first-child a {
     float: left;
     margin: 0 10px;
 }
-
-/* 
-  .span(cols) = width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)); 
-  .offset(cols) = margin-left: ((@gridColumnWidth + @gridGutterWidth) * @columns) + (@gridGutterWidth * 0.5);
-*/
-
 
 #colophon .footer-logo {
     width: 300px;
@@ -642,71 +673,83 @@ nav.menu-bar span:first-child a {
     margin: 0 0 2px 0;
 }
 
-
-/* {{{ Responsive Grid */
-
-/* Tablet Layout: 760px *
-@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+/* Tablet Layout - 760px
+ *
+ * For smaller viewports, the column width drops to 40px with the
+ * same 20px column gutter and 30px page gutters.
+ *
+ * width = (40px * columns) + (20px * (columns - 1))
+ *
+ * 1 column span - width: 40px;
+ * 2 column span - width: 100px;
+ * 3 column span - width: 160px;
+ * 4 column span - width: 220px;
+ * 5 column span - width: 280px;
+ * 6 column span - width: 340px;
+ * 7 column span - width: 400px;
+ * 8 column span - width: 460px;
+ * 9 column span - width: 520px;
+ * 10 column span - width: 580px;
+ * 11 column span - width: 640px;
+ * 12 column span - width: 700px;
+ */
+@media only screen and (min-width: 760px) and (max-width: 1000px) {
 
     #wrapper {
-      width: @widthTablet;
-    }
-
-    #masthead,
-    #main-feature,
-    #main-content,
-    .billboard,
-    .container {
-        width: @widthTablet - (@gridGutterWidth * 2);
+      width: 760px;
     }
 
     nav.menu-bar {
         font-size: .9375em;
     }
 
+    .main-column {
+        width: 460px; /* 8 column span */
+    }
+
     .sidebar {
-        .offset(0);
+        width: 160px; /* 3 column span */
+        margin-left: 70px; /* 1 column offset */
     }
 
-    #footer-email-form {
-        h3 {
-            .span_narrow(4);
-            padding-top: 4px;
-        }
-
-        .form-contents {
-            .span_narrow(5);
-        }
-
-        .form-submit {
-            .span_narrow(3);
-        }
+    #colophon .row {
+        width: 700px;
     }
 
-    #colophon {
-        .row {
-            width: @widthTablet - (@gridGutterWidth * 2);
-        }
-        .footer-logo {
-            .span_narrow(4);
-        }
-        .footer-license {
-            .span_narrow(3);
-        }
-        .footer-nav {
-            .span_narrow(2);
-        }
+    #colophon .footer-logo {
+        width: 220px;
+    }
 
+    #colophon .footer-license {
+        width: 160px;
+    }
+
+    #colophon .footer-nav {
+        width: 100px;
     }
 
 }
 
 
-/* Mobile Layout: 320px *
-@media only screen and (max-width: @breakTablet) {
+/* Mobile Layout - 320px
+ *
+ * For very small viewports, we switch to a 5 column grid
+ * at 40px per column, still with a 20px gutter.
+ *
+ * The outer page gutter goes from 30px to 20px.
+ *
+ * width = (40px * columns) + (20px * (columns - 1))
+ *
+ * 1 column span - width: 40px;
+ * 2 column span - width: 100px;
+ * 3 column span - width: 160px;
+ * 4 column span - width: 220px;
+ * 5 column span - width: 280px;
+ */
+@media only screen and (max-width: 760px) {
 
     #wrapper {
-      width: @widthMobile;
+        width: 320px;
     }
 
     #masthead,
@@ -718,57 +761,38 @@ nav.menu-bar span:first-child a {
     .main-column,
     .sidebar {
         width: auto;
-        padding-left: @gridGutterWidth / 2;
-        padding-right: @gridGutterWidth / 2;
-        padding-bottom: @gridGutterWidth;
+        float: none;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
-    .main-column,
-    .sidebar {
-        padding-left: 0;
-        padding-right: 0;
+    #masthead h2 {
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
-    .row {
-        margin-left: auto;
+    #masthead nav {
+        float: none;
+        padding-top: 10px;
+        margin-left: 10px;
     }
 
+    #masthead nav ul li {
+        display: block;
+    }
 
-    #masthead {
-        h2 {
-            padding-top: @baseLine / 2;
-            padding-bottom: @baseLine / 2;
-        }
+    #masthead nav a,
+    #masthead nav b {
+        display: block;
+        padding: 0;
+    }
 
-        nav {
-            float: none;
-            padding-top: 10px;
-            margin-left: 10px;
-
-            ul li {
-                display: block;
-                a,
-                b {
-                    display: block;
-                    padding: 0;
-                }
-
-                b,
-                .current {
-                    background-image: none;
-                }
-            }
-        }
-
-        nav.breadcrumbs {
-            margin-left: 0;
-            a,
-            span {
-                margin-right: .3em;
-                margin-left: .3em;
-            }
-        }
-
+    #masthead nav b,
+    #masthead nav .current {
+        background-image: none;
     }
 
     .huge,
@@ -804,137 +828,98 @@ nav.menu-bar span:first-child a {
         font-size: 14px;
     }
 
-
-    nav.menu-bar {
-        text-align: inherit;
-        line-height: 100%;
-
-        ul {
-            padding-top: @baseLine / 2;
-            padding-bottom: @baseLine / 2;
-            li {
-                display: block;
-                padding: 0;
-                a {
-                    padding: @baseLine / 2;
-                    border: 0;
-                    display: block;
-                    border-top: 1px dotted #d6d6d6;
-                    border-left: 0;
-                }
-                &:first-child a {
-                    border-top: 0;
-                }
-            }
-        }
+    #colophon .row {
+        width: 300px;
     }
 
-    #footer-email-form {
-        h3,
-        .form-contents,
-        .form-submit {
-            width: auto;
-            float: none;
-        }
-
-        .form-submit {
-            margin-top: @baseLine / 2;
-        }
+    #colophon .footer-logo,
+    #colophon .footer-license,
+    #colophon .footer-nav {
+        width: auto;
+        float: none;
     }
 
-    #colophon {
-        .row {
-            width: @widthMobile - @gridGutterWidth;
-        }
-        .footer-logo,
-        .footer-license,
-        .footer-nav {
-            width: auto;
-            float: none;
-        }
-        .footer-logo,
-        .footer-license {
-            margin-bottom: @baseLine;
-        }
+    #colophon .footer-logo,
+    #colophon .footer-license {
+        margin-bottom: 20px;
     }
 
-    #nav-main {
-        .toggle {
-            display: block;
-            width: 32px;
-            height: 32px;
-            margin: -3px 0 0 -3px;
-            background: no-repeat center top url(/media/img/sandstone/icn-menu.png);
-            text-indent: -999em;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .toggle.open {
-            background-position: center -100px;
-        }
-
-        #nav-main-menu li {
-            display: block;
-            float: none;
-            margin: 0 10px;
-            border-bottom: 1px solid #f2f2f2;
-        }
-
-        #nav-main-menu li:last-child {
-            border: 0;
-        }
-
-        #nav-main-menu a,
-        #nav-main-menu b {
-            cursor: pointer;
-            display: block;
-            text-transform: none;
-            padding: 12px 35px 12px 10px;
-            margin: 0 -10px;
-        }
-
-        #nav-main-menu a.submenu-item {
-            background: 94% 50% no-repeat url(/media/img/sandstone/arrow-go.png);
-        }
-
-        #nav-main-menu a:hover,
-        #nav-main-menu a:focus,
-        #nav-main-menu a:active {
-            color: #fff;
-            text-decoration: none;
-            text-shadow: 1px 1px 0 rgba(0,0,0,.25);
-            background-color: #247ac1;
-            background-position: 94% 50%;
-            background-repeat: no-repeat;
-            background-image: -moz-linear-gradient(#43a6e2, #247ac1);
-            background-image: -ms-linear-gradient(#43a6e2, #247ac1);
-            background-image: -o-linear-gradient(#43a6e2, #247ac1);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
-            background-image: -webkit-linear-gradient(#43a6e2, #247ac1);
-            background-image: linear-gradient(#43a6e2, #247ac1);
-        }
-
-        #nav-main-menu a.submenu-item:hover,
-        #nav-main-menu a.submenu-item:focus,
-        #nav-main-menu a.submenu-item:active {
-            background-image: url(/media/img/sandstone/arrow-go.png), -moz-linear-gradient(#43a6e2, #247ac1);
-            background-image: url(/media/img/sandstone/arrow-go.png), -ms-linear-gradient(#43a6e2, #247ac1);
-            background-image: url(/media/img/sandstone/arrow-go.png), -o-linear-gradient(#43a6e2, #247ac1);
-            background-image: url(/media/img/sandstone/arrow-go.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
-            background-image: url(/media/img/sandstone/arrow-go.png), -webkit-linear-gradient(#43a6e2, #247ac1);
-            background-image: url(/media/img/sandstone/arrow-go.png), linear-gradient(#43a6e2, #247ac1);
-        }
-
-        #nav-main-menu li.first > a {
-            border-radius: 10px 10px 0 0;
-        }
-
-        #nav-main-menu li.last > a {
-            border-radius: 0 0 10px 10px;
-        }
+    #nav-main .toggle {
+        display: block;
+        width: 32px;
+        height: 32px;
+        margin: -3px 0 0 -3px;
+        background: no-repeat center top url(/media/img/sandstone/icn-menu.png);
+        text-indent: -999em;
+        overflow: hidden;
+        cursor: pointer;
     }
 
-    #nav-main-menu {
+    #nav-main .toggle.open {
+        background-position: center -100px;
+    }
+
+    #nav-main #nav-main-menu li {
+        display: block;
+        float: none;
+        margin: 0 10px;
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+    #nav-main #nav-main-menu li:last-child {
+        border: 0;
+    }
+
+    #nav-main #nav-main-menu a,
+    #nav-main #nav-main-menu b {
+        cursor: pointer;
+        display: block;
+        text-transform: none;
+        padding: 12px 35px 12px 10px;
+        margin: 0 -10px;
+    }
+
+    #nav-main #nav-main-menu a.submenu-item {
+        background: 94% 50% no-repeat url(/media/img/sandstone/arrow-go.png);
+    }
+
+    #nav-main #nav-main-menu a:hover,
+    #nav-main #nav-main-menu a:focus,
+    #nav-main #nav-main-menu a:active {
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 1px 1px 0 rgba(0,0,0,.25);
+        background-color: #247ac1;
+        background-position: 94% 50%;
+        background-repeat: no-repeat;
+        background-image: -moz-linear-gradient(#43a6e2, #247ac1);
+        background-image: -ms-linear-gradient(#43a6e2, #247ac1);
+        background-image: -o-linear-gradient(#43a6e2, #247ac1);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
+        background-image: -webkit-linear-gradient(#43a6e2, #247ac1);
+        background-image: linear-gradient(#43a6e2, #247ac1);
+    }
+
+    #nav-main #nav-main-menu a.submenu-item:hover,
+    #nav-main #nav-main-menu a.submenu-item:focus,
+    #nav-main #nav-main-menu a.submenu-item:active {
+        background-image: url(/media/img/sandstone/arrow-go.png), -moz-linear-gradient(#43a6e2, #247ac1);
+        background-image: url(/media/img/sandstone/arrow-go.png), -ms-linear-gradient(#43a6e2, #247ac1);
+        background-image: url(/media/img/sandstone/arrow-go.png), -o-linear-gradient(#43a6e2, #247ac1);
+        background-image: url(/media/img/sandstone/arrow-go.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
+        background-image: url(/media/img/sandstone/arrow-go.png), -webkit-linear-gradient(#43a6e2, #247ac1);
+        background-image: url(/media/img/sandstone/arrow-go.png), linear-gradient(#43a6e2, #247ac1);
+    }
+
+    #nav-main #nav-main-menu li.first > a {
+        border-radius: 10px 10px 0 0;
+    }
+
+    #nav-main #nav-main-menu li.last > a {
+        border-radius: 0 0 10px 10px;
+    }
+
+    #nav-main #nav-main-menu {
         background: #fff;
         position: absolute;
         z-index: 99;
@@ -943,8 +928,8 @@ nav.menu-bar span:first-child a {
         left: -999em;
         top: 35px;
         overflow: visible;
-        .border-radius(10px);
-        .box-shadow(0 1px 3px 0 rgba(0,0,0,.5));
+        border-radius: 10px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.5);
     }
 
     #nav-main:hover #nav-main-menu,
@@ -952,12 +937,12 @@ nav.menu-bar span:first-child a {
         left: auto;
     }
 
-    .js #nav-main-menu {
+    .js #nav-main #nav-main-menu {
         left: auto;
         display: none;
     }
 
-    #nav-main-menu:before {
+    #nav-main #nav-main-menu:before {
         content: "";
         display: block;
         width: 28px;
@@ -968,46 +953,45 @@ nav.menu-bar span:first-child a {
         top: -10px;
     }
 
+    #masthead nav.breadcrumbs {
+        margin-left: 0;
+    }
+
+    #masthead nav.breadcrumbs a,
+    #masthead nav.breadcrumbs span {
+        display: inline;
+        margin-right: .3em;
+        margin-left: .3em;
+    }
+
 }
 
 
-/* Wide Mobile Layout: 480px *
-@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+/* Wide Mobile Layout - 480px
+ *
+ * For slightly wider viewports (e.g. smartphones in landscape mode),
+ * we keep the 40px column but gain two more columns, for a total of 7.
+ *
+ * The outer page gutter is still 20px for a total page width of 440px.
+ *
+ * width = (40px * columns) + (20px * (columns - 1))
+ *
+ * 1 column span - width: 40px;
+ * 2 column span - width: 100px;
+ * 3 column span - width: 160px;
+ * 4 column span - width: 220px;
+ * 5 column span - width: 280px;
+ * 6 column span - width: 340px;
+ * 7 column span - width: 400px;
+ */
+@media only screen and (min-width: 480px) and (max-width: 760px) {
 
     #wrapper {
-        width: @widthMobileLandscape;
+        width: 440px;
     }
 
-    #masthead,
-    #main-feature,
-    #main-content,
-    .billboard,
-    .container,
-    .main-column,
-    .sidebar {
-        width: auto;
+    #colophon .row {
+        width: 420px;
     }
 
-    .main-column,
-    .sidebar {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    #colophon {
-        .row {
-            width: @widthMobileLandscape - @gridGutterWidth;
-        }
-    }
-
-}
-/* }}} */
-
-
-
-/* Don't display the dynamic platform images when js is disabled
- * because the ones in the noscript tag will be shown
- */
-.no-js .platform-img.js {
-    display: none;
 }
