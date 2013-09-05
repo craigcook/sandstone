@@ -16,6 +16,14 @@
     <script src="/media/js/libs/html5shiv.js"></script>
     <![endif]-->
 
+    <script>
+        (function () {
+            // Add class to reflect javascript availability for CSS
+            var h = document.documentElement;
+            h.className = h.className.replace(/\bno-js\b/, 'js');
+        })();
+    </script>
+
   </head>
 
   <body class="sand">
